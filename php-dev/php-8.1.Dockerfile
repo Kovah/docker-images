@@ -1,8 +1,17 @@
 # DOCKERFILE DEVELOPMENT
-FROM bitnami/php-fpm:8.1
+FROM php:8.1-fpm
 
-RUN install_packages autoconf build-essential php-pear \
-  && pear update-channels \
-  && pecl install redis xdebug pcov
+RUN apt-get update \
+    && apt-get install -y libicu-dev libjpeg-dev libpng-dev libfreetype6-dev libpq-dev libzip-dev \
+    && docker-php-ext-install bcmath intl opcache pcntl pdo_mysql pdo_pgsql sockets zip \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && pecl install pcov redis xdebug \
+    && apt-get autoclean -y \
+    && apt-get autoremove -y
 
-COPY --from=composer:latest /usr/bin/composer /opt/bitnami/php/bin/composer
+COPY ./php-dev/files/php-8.1.ini /usr/local/etc/php/conf.d/docker-fpm.ini
+
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+
+RUN mkdir /app
+WORKDIR /app
