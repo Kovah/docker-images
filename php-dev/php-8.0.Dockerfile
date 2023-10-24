@@ -1,5 +1,5 @@
 # DOCKERFILE DEVELOPMENT
-FROM php:8.0-fpm
+FROM php:8.2-fpm
 
 RUN apt-get update \
     && apt-get install -y libicu-dev libjpeg-dev libpng-dev libfreetype6-dev libpq-dev libzip-dev \
