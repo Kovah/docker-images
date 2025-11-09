@@ -1,8 +1,5 @@
 name: Build PHP Prod Images
 
-permissions:
-  packages: write
-
 on:
   push:
     branches:
