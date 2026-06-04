@@ -20,6 +20,9 @@ Included packages/modules:
   - v8.3 (ghcr.io/kovah/docker-images/php:8.3)
   - v8.4 (ghcr.io/kovah/docker-images/php:8.4)
   - v8.5 (ghcr.io/kovah/docker-images/php:8.5)
+- GitHub Actions Runner with Ansible
+  - Latest stable Debian with the latest stable Node, Python and Ansible
+  - latest (ghcr.io/kovah/docker-images/actions-runner:latest)
 
 ## Build steps
 
@@ -37,4 +40,10 @@ docker buildx build --push --platform "linux/amd64,linux/arm64" -f php-prod/8.5.
 docker buildx build --push --platform "linux/amd64,linux/arm64" -f php-dev/8.3.Dockerfile -t ghcr.io/kovah/docker-images/php:8.3-dev .
 docker buildx build --push --platform "linux/amd64,linux/arm64" -f php-dev/8.4.Dockerfile -t ghcr.io/kovah/docker-images/php:8.4-dev .
 docker buildx build --push --platform "linux/amd64,linux/arm64" -f php-dev/8.5.Dockerfile -t ghcr.io/kovah/docker-images/php:8.5-dev .
+```
+
+### GitHub Actions Runner with Ansible
+
+```bash
+docker buildx build --push --platform "linux/amd64,linux/arm64" -f actions-runner/latest.Dockerfile -t ghcr.io/kovah/docker-images/actions-runner:latest .
 ```
