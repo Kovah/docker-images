@@ -12,6 +12,8 @@ RUN apt-get update \
         ca-certificates \
         git \
         wget \
+        curl \
+        jq \
         openssh-client \
         sshpass \
     && ln -sf /opt/node/bin/node /usr/local/bin/node \
