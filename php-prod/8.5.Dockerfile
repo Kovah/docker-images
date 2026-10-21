@@ -11,7 +11,7 @@ RUN apt-get update \
     && apt-get autoclean -y \
     && apt-get autoremove -y
 
-COPY ./php-prod/files/php-8.4.ini /usr/local/etc/php/conf.d/docker-fpm.ini
+COPY ./php-prod/files/php-8.5.ini /usr/local/etc/php/conf.d/docker-fpm.ini
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
