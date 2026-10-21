@@ -1,9 +1,9 @@
-FROM node:lts-trixie-slim AS node
+FROM node:24-trixie-slim AS node
 
-FROM python:slim-trixie
+FROM python:3.14-slim-trixie
 
-ARG ANSIBLE_VERSION=13.7.0
-ARG ANSIBLE_LINT_VERSION=26.4.0
+ARG ANSIBLE_VERSION=13.8.0
+ARG ANSIBLE_LINT_VERSION=26.10.1
 
 COPY --from=node /usr/local/ /opt/node/
 
